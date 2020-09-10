@@ -1,6 +1,6 @@
 {
-	"background_color": "#ffffff",
-	"theme_color": "#333333",
+	"background_color": "#0f1015",
+	"theme_color": "#ff002f",
 	"name": "TODO",
 	"short_name": "TODO",
 	"display": "minimal-ui",

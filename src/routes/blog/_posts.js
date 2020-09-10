@@ -2,7 +2,7 @@ const posts = [
 	{
 		title: 'Essential To Assemble',
 		slug: 'essential-to-assemble',
-		picture: `<img src='./cd-pic.png' alt='The cover picture for the post' height="300px">`,
+		picture: `<img src='./cd-pic.png' alt='The cover picture for the post' width="100%" class="post-picture">`,
 		html: `
 		<p>
 		Summertime, a nice normal sunny Sunday, I’m inside watching a tv program cause it’s 2020... you know, pandemic. 
@@ -35,3 +35,11 @@ posts.forEach(post => {
 });
 
 export default posts;
+
+// POSTS TEMPLATE
+	// {
+		// title: 'Essential To Assemble',
+		// slug: 'essential-to-assemble',
+		// picture: `<img src='./' alt='The cover picture for the post' width="100%" class="post-picture">`,
+		// html:``
+		// }

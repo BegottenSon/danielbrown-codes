@@ -11,20 +11,14 @@
 	}
 
 	ul {
+		display: flex;
+		justify-content: end;
 		margin: 0;
 		padding: 0;
 	}
 
-	/* clearfix */
-	ul::after {
-		content: '';
-		display: block;
-		clear: both;
-	}
-
 	li {
-		display: block;
-		float: left;
+		list-style: none;
 	}
 
 	[aria-current] {
@@ -47,6 +41,12 @@
 		text-decoration: none;
 		padding: 1em 0.5em;
 		display: block;
+	}
+
+	@media (max-width: 400px) {
+		ul {
+			justify-content: center;
+		}
 	}
 </style>
 
