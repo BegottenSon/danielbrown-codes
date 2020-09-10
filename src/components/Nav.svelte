@@ -55,6 +55,6 @@
 		<li><a aria-current="{segment === undefined ? 'page' : undefined}" href=".">home</a></li>
 		<li><a rel=prefetch aria-current="{segment === 'blog' ? 'page' : undefined}" href="blog">my thoughts</a></li>
 		<li><a aria-current="{segment === 'my-expertise' ? 'page' : undefined}" href="my-expertise">my expertise</a></li>
-		<li><a href="https://codepen.io/BegottenSon" target="_blank" rel="noopener noreferrer">my pen</a></li>
+		<li><a aria-current="{segment === 'my-code' ? 'page' : undefined}" href="my-code">my code</a></li>
 	</ul>
 </nav>
