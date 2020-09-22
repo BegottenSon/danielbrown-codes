@@ -1,12 +1,11 @@
 <script>
-
-// import About from "./about.svelte";
-
+	import Transition from "../components/Transition.svelte"
 </script>
 
 <svelte:head>
 	<title>Daniel Brown Codes</title>
 </svelte:head>
+<Transition>
 
 <h1>Daniel Brown</h1>
 <h2>Music Producer | Artist | Audio Engineer...</h2>
@@ -24,6 +23,8 @@
 		creativity is found everywhere. Love of music translated to 
 		creating more on the screen which leads here. This is my journey into code.</p>
 </section>
+
+</Transition>
 
 <style>
 	h1, p {
