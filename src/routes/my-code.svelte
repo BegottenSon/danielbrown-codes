@@ -1,4 +1,6 @@
-<svelte:head>My Code</svelte:head>
+<svelte:head>
+   <title>My Code</title>
+</svelte:head>
 
 <h2>Array Reduce Practice</h2>
 <iframe height="480" style="width: 100%;border-radius: 12px;" scrolling="no" title="Array Reduce Practice" src="https://codepen.io/BegottenSon/embed/wvGaGGO?height=441&theme-id=dark&default-tab=js,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
