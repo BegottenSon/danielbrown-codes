@@ -14,7 +14,6 @@
 </script>
 
 <script>
-	import Transition from "../../components/Transition.svelte"
 	export let post;
 </script>
 
