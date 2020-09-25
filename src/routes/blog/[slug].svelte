@@ -59,12 +59,8 @@
 	<title>{post.title}</title>
 </svelte:head>
 
-<Transition>
-
 <h1>{post.title}</h1>
 
 <div class='content'>
 	{@html post.html}
 </div>
-
-</Transition>
