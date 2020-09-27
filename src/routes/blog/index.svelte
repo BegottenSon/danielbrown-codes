@@ -44,6 +44,10 @@
 
 	}
 
+	.hidden {
+		display: none;
+	}
+
 	@media (max-width: 480px) {
 		.post-picture {
 			height: 100%;
@@ -57,6 +61,12 @@
 <svelte:head>
 	<title>My Thoughts</title>
 </svelte:head>
+
+<div class="hidden">
+	{#each posts as post}
+		<a href='blog/{post.slug}'>links</a>
+	{/each}
+</div>
 <Transition>
 	<main>
 		<h1>Recent posts</h1>
