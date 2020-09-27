@@ -58,8 +58,6 @@
 	<title>My Thoughts</title>
 </svelte:head>
 
-<Transition>
-
 <h1>Recent posts</h1>
 
 <ul>
@@ -71,5 +69,3 @@
 		<li><a rel='prefetch' href='blog/{post.slug}'>{post.title}</a></li>
 	{/each}
 </ul>
-
-</Transition>
