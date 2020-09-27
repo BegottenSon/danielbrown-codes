@@ -14,6 +14,7 @@
 </script>
 
 <script>
+	import Transition from "../../components/Transition.svelte"
 	export let post;
 </script>
 
@@ -57,9 +58,10 @@
 <svelte:head>
 	<title>{post.title}</title>
 </svelte:head>
-
+<Transition>
 <h1>{post.title}</h1>
 
 <div class='content'>
 	{@html post.html}
 </div>
+</Transition>
