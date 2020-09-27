@@ -57,15 +57,18 @@
 <svelte:head>
 	<title>My Thoughts</title>
 </svelte:head>
+<Transition>
+	<main>
+		<h1>Recent posts</h1>
 
-<h1>Recent posts</h1>
-
-<ul>
-	{#each posts as post}
-		<div class="post-picture">
-		<a rel='prefetch' href='blog/{post.slug}'>{@html post.picture}</a>	
-		</div>
-		
-		<li><a rel='prefetch' href='blog/{post.slug}'>{post.title}</a></li>
-	{/each}
-</ul>
+		<ul>
+			{#each posts as post}
+				<div class="post-picture">
+				<a rel='prefetch' href='blog/{post.slug}'>{@html post.picture}</a>	
+				</div>
+				
+				<li><a rel='prefetch' href='blog/{post.slug}'>{post.title}</a></li>
+			{/each}
+		</ul>
+	</main>
+</Transition>
