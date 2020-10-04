@@ -2,8 +2,12 @@
 	--blue: hsl(228, 57%, 56%);
 	--accent: hsl(349, 100%, 50%);
 	--soft-white: hsl(349, 100%, 95%);
-	--dark-blue: hsl(228, 20%, 9%);
+	--dark-blue: hsl(229, 23%, 14%);
 	--darker-blue: hsl(228, 16%, 7%);
+}
+
+::selection {
+	background-color:  hsl(349, 76%, 36%);
 }
 
 body {

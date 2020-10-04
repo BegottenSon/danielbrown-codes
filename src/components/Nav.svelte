@@ -7,19 +7,21 @@
 		border-bottom: 1px solid hsl(349, 100%, 16%);
 		border-top: 1px solid hsl(349, 100%, 16%);
 		font-weight: 300;
-		padding: 0.8em 0em 0 0;
 	}
 
 	ul {
 		display: flex;
 		justify-content: end;
+		justify-content: flex-end;
 		margin: 0;
+		margin-right: 1em;
 		padding: 0;
 	}
 
 	li {
 		list-style: none;
 		position: relative;
+		cursor: pointer;
 	}
 
 	[aria-current] {
@@ -50,6 +52,7 @@
 			bottom: 0;
 			right:0;
 			left: 0;
+			padding: 0.8em 0em 0 0;
 			border-top-width: 3px;
 			background-color: var(--darker-blue);
 			z-index: 20;

@@ -2,22 +2,17 @@
     import { onMount } from 'svelte';
     import { onDestroy } from 'svelte';
     import { fade } from 'svelte/transition';
-    import { blur } from 'svelte/transition';
 
     onMount(() => {
         fadingIn = true;
-        blurIn = true
     });
 
     onDestroy(() => {
         fadingOut = true;
-        blurOut = true;
     });
 
     let fadingIn = false;
     let fadingOut = false;
-    let blurIn = false;
-    let blurOut = false
 </script>
 
 <style>
