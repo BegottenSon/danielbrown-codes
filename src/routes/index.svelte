@@ -152,6 +152,7 @@ let options = [
 	input[type="radio"] {
 		appearance: none;
 		-webkit-appearance: none;
+		display: none;
 	}
 
 	.choice:before {
