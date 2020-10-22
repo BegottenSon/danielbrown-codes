@@ -22,7 +22,12 @@
 			visible: false,
 		}
 	]
+
 </script>
+
+<svelte:head>
+	<title>Crystal Grid</title>
+</svelte:head>
 
 <section>
     {#each crystals as crystal}
@@ -32,8 +37,8 @@
             <label for="{crystal.name}" class="default-title">{crystal.name}</label>
             <div class="card" 
             class:expanded="{crystal.visible}"  
-            style="background-image: linear-gradient({crystal.bkgColor})" 
-            on:click="{() => crystal.visible = false}">
+			style="background-image: linear-gradient({crystal.bkgColor});" 
+			on:click="{() => crystal.visible = false}">
                 <img src={crystal.image} alt="{crystal.name}">
                 <h2>{crystal.name}</h2>
                 <p>{crystal.description}</p>
@@ -46,20 +51,23 @@
 <style>
 	section {
 		display: grid;
-		grid-template-columns: repeat( auto-fit, minmax(400px, 1fr));
+		grid-template-columns: repeat( auto-fit, 400px);
         height: 100%;
+		justify-self: normal;
+		overflow: hidden;
 	}
 
     .cell {
-        width: 40vw;
+        width: 400px;
         height: 50vh;
         position: relative;
     }
 
 	.default {
 		display: grid;
-		/* position: absolute; */
-		height: 50vh;
+		position: absolute;
+		height: 100%;
+		width: 100%;
 		place-items: center;
 		text-align: center;
 		color: whitesmoke;
@@ -69,22 +77,21 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		/* position: absolute; */
-		top: 0;
-		left: 0;
-		width: 5vw;
-		height: 5vh;
+		position: absolute;
+		width: 50%;
+		height: 50%;
 		filter: brightness(1.2);
 		opacity: 0;
+		z-index: -1;
 		cursor: pointer;
 		transition: 200ms ease-out;
 	}
 	
 	.default-title {
 		font-size: 2em;
-		background-color: #02535f;
+		background-color: #5f0253;
 		border-radius: 8px;
-		padding: 1em;
+		padding: 0.5em;
 		cursor: pointer;
 	}
 	
@@ -93,10 +100,24 @@
 	}
 	
 	.expanded {
-        position: absolute;
+        /* position: fixed; */
 		height: 100vh;
 		width: 100vw;
+		bottom: 0;
+		left: 0;
+		margin: auto;
 		opacity: 1;
 		z-index: 100;
+		transition: 200ms;
+		animation: fixedEase 200ms forwards;
+	}
+
+	@keyframes fixedEase {
+		from {
+			position: absolute;
+		}
+		to {
+			position: fixed;
+		}
 	}
 </style>
