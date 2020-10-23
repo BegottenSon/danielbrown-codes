@@ -22,12 +22,14 @@
 			visible: false,
 		}
 	]
-
+let y;
 </script>
 
 <svelte:head>
 	<title>Crystal Grid</title>
 </svelte:head>
+
+<svelte:window bind:innerHeight={y}/>
 
 <section>
     {#each crystals as crystal}
@@ -50,6 +52,7 @@
 
 <style>
 	section {
+		--easing: cubic-bezier(.24,.08,.5,1);
 		display: grid;
 		grid-template-columns: repeat( auto-fit, 400px);
         height: 100%;
@@ -84,7 +87,7 @@
 		opacity: 0;
 		z-index: -1;
 		cursor: pointer;
-		transition: 200ms ease-out;
+		transition: 200ms var(--easing);
 	}
 	
 	.default-title {
@@ -100,16 +103,16 @@
 	}
 	
 	.expanded {
-        /* position: fixed; */
+        position: fixed;
 		height: 100vh;
 		width: 100vw;
-		bottom: 0;
+		top: 0;
 		left: 0;
 		margin: auto;
 		opacity: 1;
 		z-index: 100;
-		transition: 200ms;
-		animation: fixedEase 200ms forwards;
+		transition: 200ms var(--easing), opacity 500ms;
+		/* animation: fixedEase 200ms forwards; */
 	}
 
 	@keyframes fixedEase {
