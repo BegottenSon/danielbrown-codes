@@ -34,14 +34,11 @@
 			visible: false,
 		}
 	]
-let y;
 </script>
 
 <svelte:head>
 	<title>Crystal Grid</title>
 </svelte:head>
-
-<svelte:window bind:innerHeight={y}/>
 
 <section>
     {#each crystals as crystal}
