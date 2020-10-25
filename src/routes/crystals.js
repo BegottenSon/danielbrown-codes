@@ -32,6 +32,16 @@ const crystals = [
 			bkgColor: " to bottom right, hsla(242, 82%, 27%, 1), hsla(242, 82%, 35%, 1)",
 			visible: false,
 		},
+        {
+			name: "Labradorite",
+			image: "https://res.cloudinary.com/begottenson/image/upload/c_scale,w_400/v1603655431/Crystals/Labradorite_wbnb5c.jpg",
+			energy: "Amplifies",
+			chakra: "Throat | Third Eye",
+			helps: "Amplify Magical Qualites | Reducing Negativity | Detoxification of Addictive Substances | Tempering Impulsivity | Aiding Inuition",
+			placement: "On throat chakra | As a necklace | Near area of meditation",
+			bkgColor: " to bottom right, hsla(126, 82%, 23%, 1), hsla(160, 82%, 26%, 1) ",
+			visible: false,
+		},
 		{
 			name: "Rose Quartz",
 			image: "https://res.cloudinary.com/begottenson/image/upload/c_scale,w_400/v1603199255/rose-quartz_i9biui.jpg",
@@ -42,6 +52,16 @@ const crystals = [
 			placement: " On a necklace | Bracelet | Ring (commitment finger) | Heart chakra",
 			bkgColor: " to bottom right, hsla(360, 96%, 46%, 1), hsla(312, 96%, 67%, 1)",
 			visible: false,
+		},
+        {
+			name: "Selenite",
+			image: "https://res.cloudinary.com/begottenson/image/upload/c_scale,w_400/v1603656125/Crystals/Selenite_nwvb4q.jpg",
+			energy: "Amplifies",
+			chakra: "Third Eye | Crown",
+			helps: "Protecting Against Negativity | Cleansing Negative Energy | Cleansing Other Crystals & Aura | Connect with Intuition",
+			placement: "On or near the third eye or crown chakra",
+			bkgColor: " to bottom right, hsla(307, 82%, 24%, 1), hsla(280, 82%, 69%, 1) ",
+			visible: false,
 		}
 	];
 
@@ -49,7 +69,6 @@ const crystals = [
     // {
 	// 		name: "",
 	// 		image: "",
-	// 		description: "",
 	// 		energy: "",
 	// 		chakra: "",
 	// 		helps: "",
