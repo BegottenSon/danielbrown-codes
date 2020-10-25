@@ -1,15 +1,10 @@
 <script>
-    import { onMount } from 'svelte';
-    import { onDestroy } from 'svelte';
+    import { onMount, onDestroy } from 'svelte';
     import { fade } from 'svelte/transition';
 
-    onMount(() => {
-        fadingIn = true;
-    });
+    onMount(() => { fadingIn = true; });
 
-    onDestroy(() => {
-        fadingOut = true;
-    });
+    onDestroy(() => { fadingOut = true; });
 
     let fadingIn = false;
     let fadingOut = false;
