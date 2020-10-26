@@ -7,23 +7,35 @@
 	let filtered = originalList;
 
 	function filterList() {		
-		if (selected !== "empty") {
+		if (selected !== "empty" && searchTerm === undefined || searchTerm === "") {
 			filtered = originalList.filter(c => c.energy === selected);
-
-		}else if (searchTerm !== "" && selected === "empty"){
-			filtered = originalList.filter(c => {
-				c.name.indexOf(searchTerm) > -1
-				console.log("filter ran: " + filtered[0].name + "search: " + searchTerm);
-			})
+		}else {
+			filtered = originalList;
 		}
+	}
+
+	function searchList() {
+		if(searchTerm !== "") {
+			for( let c of originalList){
+				if(c.name.indexOf(searchTerm) > -1) {
+				console.log(c.name);
+				let cry = c
+				filtered = [cry, ...filtered];
+				}
+			return filtered
+			}
+		}else {
+			filtered = originalList
+		}
+		
 	}
 	function clear() {
 		filtered = originalList;
 		selected = "empty";
 		searchTerm = "";
-		console.log(searchTerm);
 	}
-	$: console.log(selected)
+	// $: console.log("continuous log of selected: "+ selected);
+	// $: console.log("Search term: " + searchTerm);
 </script>
 
 <svelte:head>
@@ -31,7 +43,7 @@
 </svelte:head>
 
 <div class="filter-field">
-	<input type="search" bind:value={searchTerm} on:keyup="{filterList}">
+	<!-- <input type="search" bind:value={searchTerm} on:keyup="{searchList}"> -->
 	<!-- svelte-ignore a11y-no-onchange -->
 	<select name="attributes" id="attributes" bind:value={selected} on:change="{filterList}">
 		<option value="empty">Energy Types</option>

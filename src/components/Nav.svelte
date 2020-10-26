@@ -99,6 +99,6 @@
 		<li><a rel=prefetch aria-current="{segment === 'blog' ? 'page' : undefined}" href="blog" id="thoughts">my thoughts</a></li>
 		<li><a aria-current="{segment === 'my-expertise' ? 'page' : undefined}" href="my-expertise" id="expertise">my expertise</a></li>
 		<li><a aria-current="{segment === 'my-code' ? 'page' : undefined}" href="my-code" id="code">my code</a></li>
-		<li><a aria-current="{segment === 'crystals' ? 'page' : undefined}" href="crystals" id="crystal">crystal grid</a></li>
+		<!-- <li><a aria-current="{segment === 'crystals' ? 'page' : undefined}" href="crystals" id="crystal">crystal grid</a></li> -->
 	</ul>
 </nav>

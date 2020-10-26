@@ -2,7 +2,6 @@ const crystals = [
 		{
 			name: "Amethyst",
 			image: "https://res.cloudinary.com/begottenson/image/upload/c_scale,w_400/v1603199254/Amethyst_tir0fc.jpg",
-			description: "Oh look, it's purple!",
 			energy: "Amplifies",
 			chakra: "Third eye | Crown",
 			helps: "Intuition and insight | insomnia | Safe travel | Connecting to higher self & Divine | Creativity | Manifestation | Stress & anxiety | Nightmares | Addiction",
@@ -13,7 +12,6 @@ const crystals = [
 		{
 			name: "Black Tourmaline",
 			image: "https://res.cloudinary.com/begottenson/image/upload/c_scale,w_400/v1603593580/black-tourmaline_ok2upr.jpg",
-			description: "Oh look, it's black!",
 			energy: "Absorbs",
 			chakra: "Root",
 			helps: "Psychic Protection | Protect Against Negativity | Grounding | Stress Release | Cleansing Negative Emotions",
@@ -23,8 +21,7 @@ const crystals = [
 		},
         {
 			name: "Kyanite",
-			image: "https://res.cloudinary.com/begottenson/image/upload/c_scale,w_400/v1603646925/Kyanite_o5nzp0.jpg",
-			description: "Oh look, it's black!",
+			image: "https://res.cloudinary.com/begottenson/image/upload/c_scale,w_400/v1603646925/Crystals/Kyanite_o5nzp0.jpg",
 			energy: "Dosen't hold energy",
 			chakra: "Green - Heart | Blue - Throat",
 			helps: "Creating Pathways from One Thing to Another | Clearing Blockage | Loyalty & Fairness | Memory Recall",
@@ -45,7 +42,6 @@ const crystals = [
 		{
 			name: "Rose Quartz",
 			image: "https://res.cloudinary.com/begottenson/image/upload/c_scale,w_400/v1603199255/rose-quartz_i9biui.jpg",
-			description: "It's so pretty!",
 			energy: "Amplifies",
 			chakra: "Heart",
 			helps: "Compassion | Kindness | Unconditional Love | Self-Love | Emotional Healing | Joy | Peace | Playfulness",
