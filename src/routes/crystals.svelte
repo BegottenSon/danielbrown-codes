@@ -1,15 +1,47 @@
 <script>
 	import Transition from "../components/Transition.svelte";
 	import crystals from "./crystals.js"
-	
+
+	let searchTerm, selected;
+	const originalList = crystals;
+	let filtered = originalList;
+
+	function filterList() {		
+		if (selected !== "empty") {
+			filtered = originalList.filter(c => c.energy === selected);
+
+		}else if (searchTerm !== "" && selected === "empty"){
+			filtered = originalList.filter(c => {
+				c.name.indexOf(searchTerm) > -1
+				console.log("filter ran: " + filtered[0].name + "search: " + searchTerm);
+			})
+		}
+	}
+	function clear() {
+		filtered = originalList;
+		selected = "empty";
+		searchTerm = "";
+		console.log(searchTerm);
+	}
+	$: console.log(selected)
 </script>
 
 <svelte:head>
 	<title>Crystal Grid</title>
 </svelte:head>
 
-<section>
-    {#each crystals as crystal}
+<div class="filter-field">
+	<input type="search" bind:value={searchTerm} on:keyup="{filterList}">
+	<!-- svelte-ignore a11y-no-onchange -->
+	<select name="attributes" id="attributes" bind:value={selected} on:change="{filterList}">
+		<option value="empty">Energy Types</option>
+		<option value="Amplifies">Amplifies</option>
+		<option value="Absorbs">Absorbs</option>
+	</select>
+	<button on:click={clear}>Clear</button>
+</div>
+<section>	
+    {#each filtered as crystal (crystal.name)}
     <div class="cell">
         <div class="default" style="background-image: linear-gradient({crystal.bkgColor})" >
             <input type=checkbox id="{crystal.name}" class="checkbox" bind:checked={crystal.visible}>
@@ -100,6 +132,7 @@
 		top: 0;
 		left: 0;
 		margin: auto;
+		overflow-y: scroll;
 		opacity: 1;
 		z-index: 100;
 		transition: 200ms var(--easing), opacity 500ms;
