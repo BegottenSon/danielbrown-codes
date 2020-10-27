@@ -16,44 +16,36 @@
 
 	function searchList() {
 		if(searchTerm !== "") {
-			for( let c of originalList){
-				if(c.name.indexOf(searchTerm) > -1) {
-				console.log(c.name);
-				let cry = c
-				filtered = [cry, ...filtered];
-				}
-			return filtered
-			}
+			filtered = originalList.filter(c => 
+			c.name.toUpperCase().includes(searchTerm.toUpperCase()))
 		}else {
 			filtered = originalList
-		}
-		
+		}	
 	}
 	function clear() {
 		filtered = originalList;
 		selected = "empty";
 		searchTerm = "";
 	}
-	// $: console.log("continuous log of selected: "+ selected);
-	// $: console.log("Search term: " + searchTerm);
 </script>
 
 <svelte:head>
 	<title>Crystal Grid</title>
 </svelte:head>
-
+<h1>Crystal Grid</h1>
 <div class="filter-field">
-	<!-- <input type="search" bind:value={searchTerm} on:keyup="{searchList}"> -->
+	<h4>Filter Crystals:</h4>
+	<input type="search" placeholder="Search for Crystals" bind:value={searchTerm} on:keyup="{searchList}">
 	<!-- svelte-ignore a11y-no-onchange -->
 	<select name="attributes" id="attributes" bind:value={selected} on:change="{filterList}">
 		<option value="empty">Energy Types</option>
 		<option value="Amplifies">Amplifies</option>
 		<option value="Absorbs">Absorbs</option>
 	</select>
-	<button on:click={clear}>Clear</button>
+	<button on:click={clear} class="clear">Clear</button>
 </div>
 <section>	
-    {#each filtered as crystal (crystal.name)}
+    {#each filtered as crystal}
     <div class="cell">
         <div class="default" style="background-image: linear-gradient({crystal.bkgColor})" >
             <input type=checkbox id="{crystal.name}" class="checkbox" bind:checked={crystal.visible}>
@@ -93,6 +85,29 @@
         height: 100%;
 		justify-self: normal;
 		overflow: hidden;
+	}
+
+	.filter-field {
+		display: flex;
+		justify-content: space-evenly;
+		margin: 1em;
+		padding-bottom: 0.3em;
+		gap: 0.5em;
+		border-bottom: 4px solid var(--accent);
+	}
+
+	input[type="search"] {
+		border: none;
+		border-radius: 4px;
+		color: var(--soft-white);
+		background-color: rgb(33, 34, 54);
+	}
+
+	.clear {
+		color: var(--soft-white);
+		background-color: var(--accent);
+		border: var(--accent);
+		border-radius: 4px;
 	}
 
     .cell {
@@ -168,6 +183,15 @@
 	p {
 		font-family: 'Roboto', sans-serif;
 		font-weight: lighter;
+	}
+
+	@media (max-width: 480px) {
+		.filter-field {
+			font-size: 0.6em;
+		}
+		h4 {
+			font-size: 0.8rem;
+		}
 	}
 
 	@keyframes fixedEase {
