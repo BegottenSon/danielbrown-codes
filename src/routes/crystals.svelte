@@ -10,7 +10,9 @@
 
 	function filterList() {		
 		if (energy !== "empty" && searchTerm === undefined || searchTerm === "") {
-			filtered = originalList.filter(c => c.energy === energy);
+			filtered = originalList.filter(c => c.energy.includes(energy));
+		}else if(energy === "empty") {
+			filtered = originalList;
 		}else {
 			filtered = originalList;
 		}
@@ -80,7 +82,7 @@
 	section {
 		--easing: cubic-bezier(.24,.08,.5,1);
 		display: grid;
-		grid-template-columns: repeat( auto-fit, 50%);
+		grid-template-columns: repeat( auto-fit, 400px);
         height: 100%;
 		justify-self: normal;
 		overflow: hidden;
@@ -103,8 +105,8 @@
 	}
 
     .cell {
-        width: 50vw;
-        height: 50vh;
+        width: 400px;
+        height: 400px;
         position: relative;
     }
 

@@ -1,6 +1,6 @@
 
 <script>
-    export let selected;
+    export let selected = "empty";
  
 </script>
 <!-- svelte-ignore a11y-no-onchange -->
