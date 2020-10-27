@@ -1,6 +1,6 @@
 <script>
-	import Transition from "../components/Transition.svelte";
 	import crystals from "./crystals.js"
+	import { flip } from "svelte/animate"
 
 	let searchTerm, selected;
 	const originalList = crystals;
@@ -9,7 +9,7 @@
 	function filterList() {		
 		if (selected !== "empty" && searchTerm === undefined || searchTerm === "") {
 			filtered = originalList.filter(c => c.energy === selected);
-		}else {
+		}else if (selected === "empty") {
 			filtered = originalList;
 		}
 	}
@@ -32,6 +32,7 @@
 <svelte:head>
 	<title>Crystal Grid</title>
 </svelte:head>
+
 <h1>Crystal Grid</h1>
 <div class="filter-field">
 	<h4>Filter Crystals:</h4>
@@ -45,9 +46,9 @@
 	<button on:click={clear} class="clear">Clear</button>
 </div>
 <section>	
-    {#each filtered as crystal}
-    <div class="cell">
-        <div class="default" style="background-image: linear-gradient({crystal.bkgColor})" >
+    {#each filtered as crystal (crystal.name)}
+    <div class="cell" animate:flip="{{duration: 300}}">
+        <div class="default" style="background-image: linear-gradient({crystal.bkgColor})">
             <input type=checkbox id="{crystal.name}" class="checkbox" bind:checked={crystal.visible}>
             <label for="{crystal.name}" class="default-title">{crystal.name}</label>
             <div class="card" 
@@ -98,7 +99,8 @@
 
 	input[type="search"] {
 		border: none;
-		border-radius: 4px;
+		border-bottom: var(--blue) 2px solid;
+		border-radius: 2px;
 		color: var(--soft-white);
 		background-color: rgb(33, 34, 54);
 	}
@@ -188,6 +190,7 @@
 	@media (max-width: 480px) {
 		.filter-field {
 			font-size: 0.6em;
+			gap: 0.3em;
 		}
 		h4 {
 			font-size: 0.8rem;
