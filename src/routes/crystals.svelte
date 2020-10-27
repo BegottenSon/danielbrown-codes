@@ -1,15 +1,17 @@
 <script>
+	import DropDownMenu from "../components/crystalsPage/DropDownMenu.svelte"
+	import SearchBox from "../components/crystalsPage/SearchBox.svelte"
 	import crystals from "./crystals.js"
 	import { flip } from "svelte/animate"
 
-	let searchTerm, selected;
+	let searchTerm, energy;
 	const originalList = crystals;
 	let filtered = originalList;
 
 	function filterList() {		
-		if (selected !== "empty" && searchTerm === undefined || searchTerm === "") {
-			filtered = originalList.filter(c => c.energy === selected);
-		}else if (selected === "empty") {
+		if (energy !== "empty" && searchTerm === undefined || searchTerm === "") {
+			filtered = originalList.filter(c => c.energy === energy);
+		}else {
 			filtered = originalList;
 		}
 	}
@@ -22,9 +24,10 @@
 			filtered = originalList
 		}	
 	}
+
 	function clear() {
 		filtered = originalList;
-		selected = "empty";
+		energy = "empty";
 		searchTerm = "";
 	}
 </script>
@@ -36,13 +39,8 @@
 <h1>Crystal Grid</h1>
 <div class="filter-field">
 	<h4>Filter Crystals:</h4>
-	<input type="search" placeholder="Search for Crystals" bind:value={searchTerm} on:keyup="{searchList}">
-	<!-- svelte-ignore a11y-no-onchange -->
-	<select name="attributes" id="attributes" bind:value={selected} on:change="{filterList}">
-		<option value="empty">Energy Types</option>
-		<option value="Amplifies">Amplifies</option>
-		<option value="Absorbs">Absorbs</option>
-	</select>
+	<SearchBox bind:search={searchTerm} on:keyup={searchList}/>
+	<DropDownMenu bind:selected={energy} on:change={filterList} />
 	<button on:click={clear} class="clear">Clear</button>
 </div>
 <section>	
@@ -82,7 +80,7 @@
 	section {
 		--easing: cubic-bezier(.24,.08,.5,1);
 		display: grid;
-		grid-template-columns: repeat( auto-fit, 400px);
+		grid-template-columns: repeat( auto-fit, 50%);
         height: 100%;
 		justify-self: normal;
 		overflow: hidden;
@@ -97,14 +95,6 @@
 		border-bottom: 4px solid var(--accent);
 	}
 
-	input[type="search"] {
-		border: none;
-		border-bottom: var(--blue) 2px solid;
-		border-radius: 2px;
-		color: var(--soft-white);
-		background-color: rgb(33, 34, 54);
-	}
-
 	.clear {
 		color: var(--soft-white);
 		background-color: var(--accent);
@@ -113,7 +103,7 @@
 	}
 
     .cell {
-        width: 400px;
+        width: 50vw;
         height: 50vh;
         position: relative;
     }
@@ -121,8 +111,8 @@
 	.default {
 		display: grid;
 		position: absolute;
-		height: 100%;
-		width: 100%;
+		height: 400px;
+		width: 400px;
 		place-items: center;
 		text-align: center;
 		color: whitesmoke;
@@ -143,7 +133,7 @@
 	}
 	
 	.default-title {
-		font-size: 2em;
+		font-size: 1.4em;
 		background-color: #5f0253;
 		border-radius: 8px;
 		padding: 0.5em;
@@ -165,7 +155,6 @@
 		opacity: 1;
 		z-index: 100;
 		transition: 200ms var(--easing), opacity 500ms;
-		/* animation: fixedEase 200ms forwards; */
 	}
 
 	.description {
@@ -187,22 +176,31 @@
 		font-weight: lighter;
 	}
 
-	@media (max-width: 480px) {
+	@media (max-width: 800px) {
+		section {
+			grid-template-columns: repeat( auto-fit, 50vw);
+		}
 		.filter-field {
 			font-size: 0.6em;
 			gap: 0.3em;
 		}
+
+		.cell {
+			width: 50vw;
+			height: 25vh;
+		}
+
+		.default {
+			height: 100%;
+			width: 100%;
+		}
+
+		.default-title {
+			font-size: 1em;
+		}
+
 		h4 {
 			font-size: 0.8rem;
-		}
-	}
-
-	@keyframes fixedEase {
-		from {
-			position: absolute;
-		}
-		to {
-			position: fixed;
 		}
 	}
 </style>
