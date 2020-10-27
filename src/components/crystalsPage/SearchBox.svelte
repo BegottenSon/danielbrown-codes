@@ -9,6 +9,7 @@
 		border-radius: 2px;
 		color: var(--soft-white);
 		background-color: rgb(33, 34, 54);
+		-webkit-appearance: none;
 	}
 </style>    
 
