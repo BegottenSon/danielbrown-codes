@@ -2,6 +2,9 @@
     export let search;
 </script>
 
+<input type="search" placeholder="Search by Crystal or Chakra" bind:value={search} on:keyup>
+
+
 <style>
     input[type="search"] {
 		border: none;
@@ -12,5 +15,3 @@
 		-webkit-appearance: none;
 	}
 </style>    
-
-<input type="search" placeholder="Search for Crystals" bind:value={search} on:keyup>

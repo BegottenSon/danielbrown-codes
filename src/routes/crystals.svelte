@@ -4,14 +4,24 @@
 	import crystals from "./crystals.js"
 	import { flip } from "svelte/animate"
 
+//TOGGLE FILTER SECTION
+	let displayFilter = false;
+	let hideFilter = true;
+	let filterToggle = () => {
+		displayFilter = !displayFilter;
+		hideFilter = !hideFilter;
+		};
+
+//SETTINGS FOR FILTER SECTION
 	let searchTerm, energy;
 	const originalList = crystals;
 	let filtered = originalList;
 
+//FUNCTIONS FOR FILTER SECTION
 	function filterList() {		
 		if (energy !== "empty" && searchTerm === undefined || searchTerm === "") {
 			filtered = originalList.filter(c => c.energy.includes(energy));
-		}else if(energy === "empty") {
+		}else if (energy === "empty") {
 			filtered = originalList;
 		}else {
 			filtered = originalList;
@@ -21,7 +31,7 @@
 	function searchList() {
 		if(searchTerm !== "") {
 			filtered = originalList.filter(c => 
-			c.name.toUpperCase().includes(searchTerm.toUpperCase()))
+			c.name.toUpperCase().includes(searchTerm.toUpperCase()) || c.chakra.toUpperCase().includes(searchTerm.toUpperCase()))
 		}else {
 			filtered = originalList
 		}	
@@ -31,6 +41,13 @@
 		filtered = originalList;
 		energy = "empty";
 		searchTerm = "";
+		setTimeout(() => {
+			if(searchTerm === "" && energy ==="empty") {
+				filterToggle();
+			}else{
+				return
+			}
+		}, 5000);
 	}
 </script>
 
@@ -39,7 +56,8 @@
 </svelte:head>
 
 <h1>Crystal Grid</h1>
-<div class="filter-field">
+<button class:displayFilter class="filterBtn" on:click={filterToggle}>Filter</button>
+<div class="filter-field" class:hideFilter>
 	<h4>Filter Crystals:</h4>
 	<SearchBox bind:search={searchTerm} on:keyup={searchList}/>
 	<DropDownMenu bind:selected={energy} on:change={filterList} />
@@ -84,8 +102,30 @@
 		display: grid;
 		grid-template-columns: repeat( auto-fit, 400px);
         height: 100%;
-		justify-self: normal;
+		width: 800px;
+		/* justify-self: normal; */
 		overflow: hidden;
+	}
+
+	.displayFilter {
+		opacity: 0;
+		transform: translateY(40px) scale(0);
+	}
+
+	.filterBtn {
+		padding: 0.6em 1em;
+		background-color: var(--blue);
+		color: var(--soft-white);
+		border-radius: 4px;
+		transition: 300ms ease-out;
+		appearance: none;
+		-webkit-appearance: none;
+	}
+
+	.hideFilter {
+		visibility: hidden;
+		opacity: 0;
+		transform: translateY(-30px) scale(0.3);
 	}
 
 	.filter-field {
@@ -95,6 +135,7 @@
 		padding-bottom: 0.3em;
 		gap: 0.5em;
 		border-bottom: 4px solid var(--accent);
+		transition: 300ms ease-out;
 	}
 
 	.clear {
@@ -181,6 +222,7 @@
 	@media (max-width: 800px) {
 		section {
 			grid-template-columns: repeat( auto-fit, 50vw);
+			width: 100%;
 		}
 		.filter-field {
 			font-size: 0.6em;
