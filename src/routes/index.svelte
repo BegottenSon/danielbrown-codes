@@ -90,7 +90,7 @@ let options = [
 	</section>
 
 	<img id="BSon-Pic" 
-		src="https://res.cloudinary.com/begottenson/image/upload/q_100/c_scale,q_auto:best,w_400/v1601780846/BSon_profile_transp.png" 
+		src="https://res.cloudinary.com/begottenson/image/upload/c_scale,q_100,w_400/v1601780846/Begotten%20Sounds/BSon_profile_transp.png" 
 		alt="Daniel Brown's Profile" 
 		height="200px">
 </main>
