@@ -1,13 +1,24 @@
 import posts from './_posts.js';
 
+const blog = posts.map(post => {
+	return {
+		html: post.html,
+		title: post.metadata.title,
+		slug: post.metadata.slug,
+		picture: post.metadata.picture,
+		summary: post.metadata.summary,
+		date: post.metadata.date,
+		tags: post.metadata.tags,
+	}
+})
+
 const lookup = new Map();
-posts.forEach(post => {
+blog.forEach(post => {
 	lookup.set(post.slug, JSON.stringify(post));
 });
 
 export function get(req, res, next) {
-	// the `slug` parameter is available because
-	// this file is called [slug].json.js
+
 	const { slug } = req.params;
 
 	if (lookup.has(slug)) {

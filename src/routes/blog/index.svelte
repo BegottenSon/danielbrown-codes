@@ -14,18 +14,24 @@
 <style>
 	h1 {
 		color: var(--blue);
+		text-align: center;
 	}
 	
-	ul {
+	.posts {
 		display: flex;
 		flex-direction: column;
+		justify-content: space-between;
 		gap: 0.5em;
 		align-items: center;
 		margin: 0 0 1em 0;
 		padding-left: 0;
 		line-height: 1.5;
 		list-style: none;
-		
+		max-width: 50ch;
+	}
+
+	ul {
+		padding: 0;
 	}
 
 	ul li {
@@ -36,12 +42,18 @@
 		text-decoration: none;
 	}
 
-	.post-picture {
+	a :global(.post-picture) {
 		background-color: var(--dark-blue);
 		border-radius: 12px;
-		height: 100%;
+		height: 150px;
 		width: 300px;
+		object-fit: cover;
+	}
 
+	.posts h5 {
+		align-self: end;
+		background-color: var(--dark-blue);
+		padding: 0.5em;
 	}
 
 	.hidden {
@@ -49,12 +61,10 @@
 	}
 
 	@media (max-width: 480px) {
-		.post-picture {
-			height: 100%;
-			width: 250px;
+		main {
+			padding: 0 1em;
 		}
 	}
-
 
 </style>
 
@@ -69,15 +79,17 @@
 </div>
 <Transition>
 	<main>
-		<h1>Recent posts</h1>
-
+		<h1>My Thoughts</h1>
 		<ul>
 			{#each posts as post}
+			<div class="posts">
 				<div class="post-picture">
 				<a rel='prefetch' href='blog/{post.slug}'>{@html post.picture}</a>	
 				</div>
-				
 				<li><a rel='prefetch' href='blog/{post.slug}'>{post.title}</a></li>
+				<p>{post.summary}</p>
+				<h5>{post.tags}</h5>
+			</div>
 			{/each}
 		</ul>
 	</main>

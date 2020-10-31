@@ -1,7 +1,6 @@
 <script context="module">
 	export async function preload({ params, query }) {
-		// the `slug` parameter is available because
-		// this file is called [slug].svelte
+		
 		const res = await this.fetch(`blog/${params.slug}.json`);
 		const data = await res.json();
 
@@ -53,14 +52,24 @@
 	.content :global(li) {
 		margin: 0 0 0.5em 0;
 	}
+
+	@media (max-width: 915px) {
+		h1 {
+			text-align: center;
+		}
+
+		.content {
+			padding: 0 1.5em;
+		}
+	}
 </style>
 
 <svelte:head>
 	<title>{post.title}</title>
 </svelte:head>
 <Transition>
-<h1>{post.title}</h1>
 
+<h1>{post.title}</h1>
 <div class='content'>
 	{@html post.html}
 </div>

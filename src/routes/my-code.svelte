@@ -10,6 +10,10 @@
 <Transition>
 
     <h2><a href="crystals">Crystals Grid</a></h2>
+    <p>As a weekend project, that is easliy turning into an ongoing populating of crystals, I
+        created this crystal grid page. An easy way to lookup many crystals and view where to 
+        place them and use cases. Tap on the title to check out the crystals.
+    </p>
 
     <h2>My Music App Idea</h2>
     <MusicAppIdea />
