@@ -18,6 +18,9 @@
 </script>
 
 <style>
+	article {
+		max-width: 56em;
+	}
 	h1 {
 		color: var(--blue);
 		font-size: 3em;
@@ -68,9 +71,10 @@
 	<title>{post.title}</title>
 </svelte:head>
 <Transition>
-
-<h1>{post.title}</h1>
-<div class='content'>
-	{@html post.html}
-</div>
+<article>
+	<h1>{post.title}</h1>
+	<div class='content'>
+		{@html post.html}
+	</div>
+</article>
 </Transition>

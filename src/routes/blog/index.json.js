@@ -7,7 +7,7 @@ const contents = JSON.stringify(posts.map(post => {
 		picture: post.metadata.picture,
 		summary: post.metadata.summary,
 		date: post.metadata.date,
-		tags: post.metadata.tags,
+		tags: post.metadata.tags.split(","),
 	};
 }));
 
