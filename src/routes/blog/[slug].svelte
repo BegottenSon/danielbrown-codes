@@ -19,8 +19,10 @@
 
 <style>
 	article {
+		width: 100vw;
 		max-width: 56em;
 	}
+
 	h1 {
 		color: var(--blue);
 		font-size: 3em;
