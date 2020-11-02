@@ -37,8 +37,8 @@ a {
 code {
 	font-family: menlo, inconsolata, monospace;
 	font-size: calc(1em - 2px);
-	color: #555;
-	background-color: #f0f0f0;
+	color: var(--soft-white);
+	background-color: hsl(350, 22%, 20%);
 	padding: 0.2em 0.4em;
 	border-radius: 2px;
 }

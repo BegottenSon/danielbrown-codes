@@ -27,6 +27,7 @@
 	}
 
 	.content :global(h2) {
+		color: var(--accent);
 		font-size: 1.4em;
 		font-weight: 500;
 	}
@@ -36,7 +37,7 @@
 	}
 
 	.content :global(pre) {
-		background-color: #f9f9f9;
+		background-color: hsl(350, 58%, 23%);
 		box-shadow: inset 1px 1px 5px rgba(0,0,0,0.05);
 		padding: 0.5em;
 		border-radius: 2px;
@@ -44,6 +45,7 @@
 	}
 
 	.content :global(pre) :global(code) {
+		color: var(--soft-white);
 		background-color: transparent;
 		padding: 0;
 	}
