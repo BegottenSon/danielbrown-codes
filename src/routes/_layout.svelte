@@ -14,6 +14,13 @@
 		box-sizing: border-box;
 	}
 
+	:global(.p-links) {
+		font-weight: 700;
+		color: var(--accent);
+		text-decoration: none;
+
+	}
+
 	@media (max-width: 480px) {
 		main {
 			margin-bottom: 64px;

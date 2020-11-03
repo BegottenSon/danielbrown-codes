@@ -95,7 +95,7 @@
 	.tags {
 		display: flex;
 		gap: 0.5em;
-		align-self: end;
+		align-self: flex-end;
 	}
 
 	.tags h5 {

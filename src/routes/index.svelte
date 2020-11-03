@@ -139,13 +139,6 @@ let options = [
 		color: var(--blue);
 	}
 
-	.p-links {
-		font-weight: 700;
-		color: var(--accent);
-		text-decoration: none;
-
-	}
-
 	.about-selection {
 		display: flex;
 		justify-content: space-between;

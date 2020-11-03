@@ -60,6 +60,12 @@
 		margin: 0 0 0.5em 0;
 	}
 
+	.content :global(a) {
+		text-decoration-color: var(--accent);
+		text-decoration-style: double;
+		text-decoration-thickness: 6%;
+	}
+
 	@media (max-width: 915px) {
 		h1 {
 			text-align: center;
