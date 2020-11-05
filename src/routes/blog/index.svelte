@@ -42,7 +42,6 @@
 		gap: 0.5em;
 		align-items: center;
 		margin: 0 0 1em 0;
-		/* padding-left: 0; */
 		padding: 0.8em;
 		line-height: 1.5;
 		list-style: none;
@@ -63,7 +62,7 @@
 	ul {
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: space-between;
+		justify-content: center;
 		padding: 0;
 		gap: 2em;
 	}
