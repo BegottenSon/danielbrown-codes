@@ -114,6 +114,7 @@
 		font-size: 0.8em;
 		text-align: center;
 		background-color: var(--dark-blue);
+		border: 2px solid rgb(65, 65, 102);
 		border-radius: 8px;
 		padding: 1em;
 		width: 3em;
