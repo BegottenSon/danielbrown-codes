@@ -42,10 +42,15 @@
 		gap: 0.5em;
 		align-items: center;
 		margin: 0 0 1em 0;
-		padding-left: 0;
+		/* padding-left: 0; */
+		padding: 0.8em;
 		line-height: 1.5;
 		list-style: none;
 		max-width: 50ch;
+		border-radius: 16px;
+		background-color: hsla(228, 16%, 6%, 0.7);
+		box-shadow: 0 15px 25px  hsla(228, 100%, 74%, 0.15);
+		box-sizing: border-box;
 	}
 
 	.picture-container {

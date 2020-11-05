@@ -1,5 +1,6 @@
 <script>
 	import Nav from '../components/Nav.svelte';
+	import Footer from '../components/Footer.svelte';
 
 	export let segment;
 </script>
@@ -9,7 +10,6 @@
 		display: grid;
 		place-items: center;
 		position: relative;
-		/* max-width: 56em; */
 		margin: 0 auto;
 		box-sizing: border-box;
 	}
@@ -18,7 +18,6 @@
 		font-weight: 700;
 		color: var(--accent);
 		text-decoration: none;
-
 	}
 
 	@media (max-width: 480px) {
@@ -28,8 +27,15 @@
 	}
 </style>
 
+<svelte:head>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Itim&family=Quicksand&family=Roboto:wght@900&display=swap" rel="stylesheet">
+</svelte:head>
+
 <Nav {segment}/>
 
 <main>
 	<slot></slot>
 </main>
+
+<Footer />

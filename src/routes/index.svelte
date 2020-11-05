@@ -114,6 +114,7 @@ let options = [
 	}
 
 	h2:nth-of-type(2) {
+		font-family: "Quicksand";
 		font-weight: bold;
 		transition: ease-out 400ms;
 	}
