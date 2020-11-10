@@ -1,7 +1,7 @@
 const crystals = [
 		{
 			name: "Amethyst",
-			image: "https://res.cloudinary.com/begottenson/image/upload/c_scale,w_400/v1603199254/Amethyst_tir0fc.jpg",
+			image: "https://res.cloudinary.com/begottenson/image/upload/c_scale,w_400/v1603199254/Crystals/Amethyst_tir0fc.jpg",
 			energy: "Amplifies",
 			chakra: "Third eye | Crown",
 			helps: "Intuition and insight | insomnia | Safe travel | Connecting to higher self & Divine | Creativity | Manifestation | Stress & anxiety | Nightmares | Addiction",
@@ -11,7 +11,7 @@ const crystals = [
 		},
 		{
 			name: "Black Tourmaline",
-			image: "https://res.cloudinary.com/begottenson/image/upload/c_scale,w_400/v1603593580/black-tourmaline_ok2upr.jpg",
+			image: "https://res.cloudinary.com/begottenson/image/upload/c_scale,w_400/v1603593580/Crystals/black-tourmaline_ok2upr.jpg",
 			energy: "Absorbs",
 			chakra: "Root",
 			helps: "Psychic Protection | Protect Against Negativity | Grounding | Stress Release | Cleansing Negative Emotions",
@@ -81,7 +81,7 @@ const crystals = [
 		},
 		 {
 			name: "Red Jasper",
-			image: "https://res.cloudinary.com/begottenson/image/upload/c_scale,w_400/v1603834082/Red_Jasper_pp8yvc.jpg",
+			image: "https://res.cloudinary.com/begottenson/image/upload/c_scale,w_400/v1603834082/Crystals/Red_Jasper_pp8yvc.jpg",
 			energy: "Absorb",
 			chakra: "Root",
 			helps: "Manifestation | Balancing Energies of Excess | Grounding | Sability",

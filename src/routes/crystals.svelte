@@ -166,8 +166,8 @@
 		flex-direction: column;
 		align-items: center;
 		position: absolute;
-		width: 50%;
-		height: 50%;
+		width: 400px;
+		height: 400px;
 		filter: brightness(1.2);
 		opacity: 0;
 		z-index: -1;
@@ -245,6 +245,18 @@
 
 		h4 {
 			font-size: 0.8rem;
+		}
+	}
+
+	@media (min-width: 500px) {
+		.card {
+			top: 50%;
+			left: 50%;
+		}
+
+		.expanded {
+			top: 0;
+			left: 0;
 		}
 	}
 </style>
