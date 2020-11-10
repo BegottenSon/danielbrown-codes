@@ -48,7 +48,7 @@
 		max-width: 50ch;
 		border-radius: 16px;
 		background-color: hsla(228, 16%, 6%, 0.7);
-		box-shadow: 0 15px 25px  hsla(228, 100%, 74%, 0.15);
+		box-shadow: 0 15px 25px  hsla(228, 100%, 74%, 0.05);
 		box-sizing: border-box;
 	}
 
@@ -98,7 +98,7 @@
 
 	.tags {
 		display: flex;
-		gap: 0.5em;
+		/* gap: 0.5em; */
 		align-self: flex-end;
 	}
 
@@ -107,6 +107,7 @@
 		border-radius: 4px;
 		padding: 0.6em;
 		cursor: pointer;
+		margin-left: 0.5em;
 	}
 
 	.reset {
