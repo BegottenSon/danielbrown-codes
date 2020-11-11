@@ -3,7 +3,7 @@ title: How to Setup a Markdown Blog Using Sapper & Svelte
 slug: setup-markdown-blog-using-sapper
 picture: <img src='https://images.unsplash.com/photo-1505238680356-667803448bb6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80' alt='Creative Discourse Event Logo' width="100%" class="post-picture">
 summary: Seeing that I’m new to Svelte/Sapper, let alone coding on a consistent basis, I decided to learn this framework by...
-date: 2020-11-31
+date: 2020-10-31
 tags: code, sapper, svelte
 ---
 

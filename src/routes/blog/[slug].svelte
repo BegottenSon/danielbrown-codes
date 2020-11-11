@@ -28,6 +28,10 @@
 		font-size: 3em;
 	}
 
+	.content {
+		display: grid;
+	}
+
 	.content :global(h2) {
 		color: var(--accent);
 		font-size: 1.4em;
@@ -41,9 +45,10 @@
 	.content :global(pre) {
 		background-color: hsl(350, 58%, 23%);
 		box-shadow: inset 1px 1px 5px rgba(0,0,0,0.05);
+		justify-self: center;
 		padding: 0.5em;
-		border-radius: 2px;
-		overflow-x: auto;
+		overflow-x: scroll;
+		width: 50vw;
 	}
 
 	.content :global(pre) :global(code) {
@@ -66,6 +71,13 @@
 		text-decoration-thickness: 6%;
 	}
 
+	.content :global(blockquote) {
+		color: hsl(242, 78%, 91%);
+		font-style: italic;
+		background-color: var(--dark-blue);
+		padding: 1em;
+	}
+
 	@media (max-width: 915px) {
 		h1 {
 			text-align: center;
@@ -73,6 +85,10 @@
 
 		.content {
 			padding: 0 1.5em;
+		}
+
+		.content :global(pre) {
+			width: 80vw;
 		}
 	}
 </style>
