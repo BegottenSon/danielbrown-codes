@@ -1,4 +1,5 @@
 <script>
+    import Transition from "../components/Transition.svelte";
     //PAY PER STREAM AMOUNT
     let platforms = [
         {
@@ -239,7 +240,7 @@
 <svelte:head>
    <title>Music Streaming Estimator</title>
 </svelte:head>
-
+<Transition>
 <div class="wrapper">
 <h1>Music Streaming Estimator</h1>
 <h2 class="headers">Streaming Payouts By Music Services</h2>
@@ -286,3 +287,4 @@
     {/each}
 </section>
 </div>
+</Transition>
