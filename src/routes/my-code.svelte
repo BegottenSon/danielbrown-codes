@@ -10,6 +10,11 @@
 <Transition>
 <main>
     <h2><a href="music-streaming">Music Streaming Estimator</a></h2>
+    <p> 
+        I created a Numbers spreadsheet for estimating music streaming payouts. 
+        Decided to put my Svelte learning into practice and re-create that Music Streaming Estimator for the web.
+        To all my independant musicians and artists, enjoy!
+    </p>
     <h2><a href="crystals">Crystals Grid</a></h2>
     <p>As a weekend project, that is easliy turning into an ongoing populating of crystals, I
         created this crystal grid page. An easy way to lookup many crystals and view where to 

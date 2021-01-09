@@ -1,46 +1,40 @@
 <script>
     //PAY PER STREAM AMOUNT
-    let apple = 0.00735;
-    let spotify = 0.00437;
-    let tidal = 0.0125;
-    let amazon = 0.00402;
-    let youtube = 0.00069;
-
     let platforms = [
         {
             name: "Apple Music",
             id: "apple",
             pay: 0.00735,
             streams: 0,
-            payout: 0,
+            payout: "204,082"
         },
         {
             name: "Spotify",
             id: "spotify",
             pay: 0.00437,
             streams: 0,
-            payout: 0,
+            payout: "343,249",
         },
         {
             name: "Tidal",
             id: "tidal",
             pay: 0.0125,
             streams: 0,
-            payout: 0,
+            payout: "120,000",
         },
         {
             name: "Amazon",
             id: "amazon",
             pay: 0.00402,
             streams: 0,
-            payout: 0,
+            payout: "373,134",
         },
         {
             name: "YouTube",
             id: "youtube",
             pay: 0.00069,
             streams: 0,
-            payout: 0,
+            payout: "2,173,913",
         }
     ]
     
@@ -57,25 +51,31 @@
 
     //STREAMS NEEDED TO MAKE DESIRED AMOUNT
     let desiredAmount = 1500;
-    let appleDesire = findDesire(apple);
-    let spotifyDesire = findDesire(spotify);
-    let tidalDesire = findDesire(tidal);
-    let amazonDesire = findDesire(amazon)
-    let youtubeDesire = findDesire(youtube);
 
-    function findDesire(service) {
-        let amount = Math.round(desiredAmount / service);
-        return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    function calculateAmount() {
+        for( let platform in platforms) {
+            let thePay = Math.round(desiredAmount / platforms[platform].pay);
+            platforms[platform].payout = thePay.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }   
     }
-
 </script>
 
 <style>
+    .wrapper {
+        --box-color: rgb(44, 31, 102);
+        display: grid;
+        place-items: center;
+        width: 100%;
+        padding-bottom: 10em;
+        background-color: rgb(34, 29, 54);
+    }
 
     /* SECTIONS */
     .payouts-services {
         display: flex;
-        background-color: rgb(22, 77, 77);
+        flex-direction: column;
+        align-items: space-between;
+        background-color: var(--box-color);
         border-radius: 8px;
         padding: 1em;
     }
@@ -84,8 +84,13 @@
         margin-right: 0.8em;
     }
 
+    .service-chart {
+        display: flex;
+        justify-content: space-between;
+    }
+
     .monthly-estimator {
-        background-color: rgb(22, 77, 77);
+        background-color: var(--box-color);
         border-radius: 8px;
         padding: 1em;
         width: 70vw;
@@ -105,6 +110,14 @@
         grid-column: 1/2;
     }
 
+    .estimator-grid .apple {
+        grid-column: 2/3;
+    }
+
+    .estimator-grid .service-names {
+        justify-self: center;
+    }
+
     #stream-total {
         grid-column: 5/6;
     }
@@ -115,13 +128,12 @@
 
     #payout {
         justify-self: center;
-        /* margin-left: 0.5em; */
     }
 
     .desired-amount {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
-        background-color: rgb(22, 77, 77);
+        background-color: var(--box-color);
         border-radius: 8px;
         align-content: center;
         padding: 1em;
@@ -131,18 +143,53 @@
         margin-right: 0.8em;
     }
 
+    .headers {
+        color: var(--box-color);
+        font-size: 2em;
+        text-align: center;
+        -webkit-text-stroke: 0.6px whitesmoke;
+        margin-top: 2em;
+    }
+
+    .instructions {
+        font-size: 16px;
+        width: 50ch;
+    }
+
     /* THE NUMBERS */
+    .monthly-estimator .streams {
+        border-bottom: 2px solid rgb(0, 128, 122);
+    }
 
     .streams {
         appearance: none;
         -moz-appearance: textfield;
         background: none;
         border: none;
-        border-bottom: olive;
         font-size: 1em;
         margin: 0;
         height: 1em;
         width: 3.5em;
+    }
+
+    .amount-input {
+        appearance: none;
+        -moz-appearance: textfield;
+        background: none;
+        border: none;
+        border-bottom: 2px solid whitesmoke;
+        color: whitesmoke;
+        font-size: 1em;
+    }
+
+    .money-sign{
+        color: whitesmoke;
+    }
+
+    .payout-group {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     /* COLORING NUMBERS BY STREAMING SERVICE */
@@ -155,7 +202,7 @@
     }
 
     .tidal {
-        color: rgb(27, 27, 27);
+        color: rgb(139, 132, 132);
     }
 
     .amazon {
@@ -166,58 +213,76 @@
         color: #BC2C30;
     }
 
+    @media(max-width: 550px) {
+        .monthly-estimator {
+            width: 90%;
+        }
+        .service-names, .title, .pay-per-stream {
+            font-size: 14px;
+        }
+
+        .service-chart .pay {
+            font-size: 14px;
+        }
+
+        .streams {
+            font-size: 1em;
+        }
+
+        .instructions {
+        font-size: 12px;
+        width: 30ch;
+        }
+    }
 </style>
 
 <svelte:head>
    <title>Music Streaming Estimator</title>
 </svelte:head>
 
+<div class="wrapper">
 <h1>Music Streaming Estimator</h1>
-<h2>Streaming Payouts By Music Services</h2>
+<h2 class="headers">Streaming Payouts By Music Services</h2>
+<p class="instructions">Amount per stream is updated from the most current data available from each streaming service</p>
 <section class="payouts-services">
-    <div class="service-chart">
         {#each platforms as platform}
+        <div class="service-chart">
             <h3 class="service-names">{platform.name}</h3>
+            <h3 class="{platform.id} pay"><span class="money-sign">$</span>{platform.pay}</h3>
+        </div>
         {/each}
-    </div>
-    <div class="pay-per-stream">
-        {#each platforms as platform}
-            <h3 class={platform.id}>{platform.pay}</h3>
-        {/each}
-    </div>
-    
 </section>
-<h2>Monthly Estimator</h2>
+<h2 class="headers">Monthly Estimator</h2>
+<p class="instructions">Click on any stream number under the "Stream" section to add the amount of streams you're receiving</p>
 <section class="monthly-estimator">
     <div class="estimator-grid">
         {#each platforms as platform}
-            <h3 class="service-names">{platform.name}</h3>
+            <h3 class="service-names {platform.id}">{platform.name}</h3>
         {/each}
         <h3 class="title">Streams</h3>
         {#each platforms as platform}
-            <input class="streams"
+            <input class="streams {platform.id}"
             type="number"
             bind:value={platform.streams}
             >
         {/each}
         <h3 class="title">Estimate Payout</h3>
         {#each platforms as platform}
-            <h3 class="{platform.id}" id="payout">${(platform.pay * platform.streams).toFixed(2)}</h3>
+            <h3 class="{platform.id}" id="payout"><span class="money-sign">$</span>{platform.streams? (platform.pay * platform.streams).toFixed(2) : 0}</h3>
         {/each}
         <h3 class="title">Total</h3>
-        <h3 id="stream-total">{streamTotal}</h3>
-        <h3 id="payout-total">${payoutTotal.toFixed(2)}</h3>
+        <h3 id="stream-total">{streamTotal ? streamTotal : 0}</h3>
+        <h3 id="payout-total"><span class="money-sign">$</span>{payoutTotal ? payoutTotal.toFixed(2) : 0}</h3>
     </div>
 </section>
-<h2>Streams Needed to Make ${desiredAmount}</h2>
+<h2 class="headers">Streams Needed to Make ${desiredAmount === undefined ? 0 : desiredAmount}</h2>
+<p class="instructions">Input the desired amount of money you're looking to make in a month from streaming and the following chart will show the numbers per streaming platform: <input type="number" class="amount-input" bind:value={desiredAmount} on:keyup={calculateAmount}></p>
 <section class="desired-amount">
     {#each platforms as platform}
+    <div class="payout-group">
         <h3 class="service-names">{platform.name}</h3>
+        <h3 class="streams {platform.id}">{desiredAmount === undefined ? 0 : platform.payout}</h3>
+    </div>
     {/each}
-
-    <h3 class="apple streams">{appleDesire}</h3>
-    <h3 class="spotify streams">{spotifyDesire}</h3>
-    <h3 class="tidal streams">{tidalDesire}</h3>
-    <h3 class="amazon streams">{amazonDesire}</h3>
-    <h3 class="youtube streams">{youtubeDesire}</h3>
 </section>
+</div>
