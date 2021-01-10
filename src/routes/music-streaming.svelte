@@ -78,6 +78,7 @@
         align-items: space-between;
         background-color: var(--box-color);
         border-radius: 8px;
+        width: 40vw;
         padding: 1em;
     }
 
@@ -215,23 +216,36 @@
     }
 
     @media(max-width: 550px) {
-        .monthly-estimator {
-            width: 90%;
+        .payouts-services {
+            width: 70vw;
         }
+
+        .payouts-services .service-names {
+            font-size: 1.2em;
+        }
+
+        .monthly-estimator {
+            width: 92vw;
+        }
+
+        .estimator-grid .streams {
+            font-size: 16px;
+        }
+
         .service-names, .title, .pay-per-stream {
             font-size: 14px;
         }
 
         .service-chart .pay {
-            font-size: 14px;
+            font-size: 1.2em;
         }
 
         .streams {
-            font-size: 1em;
+            font-size: 1.2em;
         }
 
         .instructions {
-        font-size: 12px;
+        font-size: 14px;
         width: 30ch;
         }
     }
@@ -240,7 +254,7 @@
 <svelte:head>
    <title>Music Streaming Estimator</title>
 </svelte:head>
-<Transition>
+<!-- <Transition> -->
 <div class="wrapper">
 <h1>Music Streaming Estimator</h1>
 <h2 class="headers">Streaming Payouts By Music Services</h2>
@@ -287,4 +301,4 @@
     {/each}
 </section>
 </div>
-</Transition>
+<!-- </Transition> -->
