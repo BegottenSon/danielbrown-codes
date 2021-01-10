@@ -225,7 +225,7 @@
         }
 
         .monthly-estimator {
-            width: 92vw;
+            width: 90vw;
         }
 
         .estimator-grid .streams {
