@@ -100,8 +100,10 @@
 
     .estimator-grid {
         display: grid;
-        grid-template-columns: repeat(6, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(3, 1fr);
+        grid-auto-flow: row;
+        gap: 1em;
     }
 
     .estimator-grid .streams {
@@ -109,23 +111,56 @@
     }
 
     .estimator-grid .title {
-        grid-column: 1/2;
+        /* grid-column: 1/2; */
     }
 
     .estimator-grid .apple {
-        grid-column: 2/3;
+        /* grid-column: 2/3; */
     }
 
     .estimator-grid .service-names {
         justify-self: center;
     }
 
+    .service-card {
+        /* position: relative; */
+        padding: 1em;
+        width: 20vw;
+    }
+    .service-card-bkg::before {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background-image: linear-gradient(to bottom right, hsl(16, 71%, 53%), hsl(262, 71%, 53%));
+        border-radius: 8px;
+        mix-blend-mode: soft-light;
+        filter: blur(1px) opacity(0.6);
+        z-index: -1;
+    }
+
+    .service-card {
+        background-color: var(--box-color);
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        z-index: 1;
+    }
+
+    .stream-title {
+        /* grid-column: 1/2; */
+        grid-row: 3/4;
+    }
+
     #stream-total {
-        grid-column: 5/6;
+        grid-row: 3/4;
     }
 
     #payout-total {
-        grid-column: 6/7;
+        grid-row: 3/4;
+        /* grid-column: 6/7; */
     }
 
     #payout {
@@ -242,7 +277,7 @@
 
         .streams {
             font-size: 1.2em;
-            width: 10vw;
+            width: 15vw;
         }
 
         .instructions {
@@ -273,21 +308,17 @@
 <section class="monthly-estimator">
     <div class="estimator-grid">
         {#each platforms as platform}
+        <div class="service-card">
             <h3 class="service-names {platform.id}">{platform.name}</h3>
+                <input class="streams {platform.id}"
+                type="number"
+                bind:value={platform.streams}
+                >
+                <h3 class="{platform.id}" id="payout"><span class="money-sign">$</span>{platform.streams? (platform.pay * platform.streams).toFixed(2) : 0}</h3>
+            <div class="service-card-bkg"></div>
+        </div>
         {/each}
-        <h3 class="title">Streams</h3>
-        
-        {#each platforms as platform}
-            <input class="streams {platform.id}"
-            type="number"
-            bind:value={platform.streams}
-            >
-        {/each}
-        <h3 class="title">Estimate Payout</h3>
-        {#each platforms as platform}
-            <h3 class="{platform.id}" id="payout"><span class="money-sign">$</span>{platform.streams? (platform.pay * platform.streams).toFixed(2) : 0}</h3>
-        {/each}
-        <h3 class="title">Total</h3>
+        <h3 class="title stream-title">Total</h3>
         <h3 id="stream-total">{streamTotal ? streamTotal : 0}</h3>
         <h3 id="payout-total"><span class="money-sign">$</span>{payoutTotal ? payoutTotal.toFixed(2) : 0}</h3>
     </div>
