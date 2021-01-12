@@ -270,7 +270,7 @@
 
         .streams {
             font-size: 1.2em;
-            width: 15vw;
+            width: 20vw;
         }
 
         .instructions {
@@ -306,14 +306,14 @@
                 type="number"
                 bind:value={platform.streams}
                 >
-                <h3 class="{platform.id}" id="payout"><span class="money-sign">$</span>{platform.streams? (platform.pay * platform.streams).toFixed(2) : 0}</h3>
+                <h3 class="{platform.id}" id="payout"><span class="money-sign">$</span>{platform.streams? (platform.pay * platform.streams).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : 0}</h3>
             <div class="service-card-bkg"></div>
         </div>
         {/each}
         <h3 class="title stream-title">Total</h3>
 
-        <h3 id="stream-total">{streamTotal ? streamTotal : 0}</h3>
-        <h3 id="payout-total"><span class="money-sign">$</span>{payoutTotal ? payoutTotal.toFixed(2) : 0}</h3>
+        <h3 id="stream-total">{streamTotal ? streamTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : 0}</h3>
+        <h3 id="payout-total"><span class="money-sign">$</span>{payoutTotal ? payoutTotal.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : 0}</h3>
     </div>
 </section>
 <h2 class="headers">Streams Needed to Make ${desiredAmount === undefined ? 0 : desiredAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h2>
