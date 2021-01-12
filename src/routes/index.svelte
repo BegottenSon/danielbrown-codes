@@ -53,12 +53,12 @@ let options = [
 		{#if selected === 'music'}
 		<p 	in:blur="{{amount: 10, delay: 400}}"
 			out:blur="{{amount: 10}}">
-			The love for music runs deep. Started out rapping, which lead to me wanting to create 
-			my own music. Music Prodction opened a whole new level of creativity and 
-			conitnuing that momentum, I went to Sheffield Institute for Recording Arts to learn 
-			the skills of Audio Engineering. Now, I enjoy the freedom to flex my creative 
-			muscles on controlling the music creation process from beginning to end. Dive into 
-			the sounds at <a href="https://www.begottensounds.com" class='p-links'>Begotten Sounds</a>.
+			The love for music runs deep. Started out rapping, which left me with the desire to create 
+			my own music. Music Production opened a whole new level of creativity with a momentum that 
+			propelled me to attend Sheffield Institute for Recording Arts to become an Audio Engineer. 
+			Now, I enjoy the freedom to flex my creative muscles on controlling the music creation process 
+			from beginning to end. Dive into the sounds at 
+			<a href="https://www.begottensounds.com" class='p-links'>Begotten Sounds</a>.
 		</p>
 
 		{:else if selected === 'artist'}
@@ -90,7 +90,7 @@ let options = [
 	</section>
 
 	<img id="BSon-Pic" 
-		src="https://res.cloudinary.com/begottenson/image/upload/q_100/c_scale,q_auto:best,w_400/v1601780846/BSon_profile_transp.png" 
+		src="https://res.cloudinary.com/begottenson/image/upload/c_scale,q_100,w_400/v1601780846/Begotten%20Sounds/BSon_profile_transp.png" 
 		alt="Daniel Brown's Profile" 
 		height="200px">
 </main>
@@ -114,6 +114,7 @@ let options = [
 	}
 
 	h2:nth-of-type(2) {
+		font-family: "Quicksand";
 		font-weight: bold;
 		transition: ease-out 400ms;
 	}
@@ -137,13 +138,6 @@ let options = [
 
 	#purpose-statement {
 		color: var(--blue);
-	}
-
-	.p-links {
-		font-weight: 700;
-		color: var(--accent);
-		text-decoration: none;
-
 	}
 
 	.about-selection {

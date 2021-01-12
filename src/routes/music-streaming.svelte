@@ -283,7 +283,6 @@
 <svelte:head>
    <title>Music Streaming Estimator</title>
 </svelte:head>
-<!-- <Transition> -->
 <div class="wrapper">
 <h1>Music Streaming Estimator</h1>
 <h2 class="headers">Streaming Payouts By Music Services</h2>
@@ -312,6 +311,7 @@
         </div>
         {/each}
         <h3 class="title stream-title">Total</h3>
+
         <h3 id="stream-total">{streamTotal ? streamTotal : 0}</h3>
         <h3 id="payout-total"><span class="money-sign">$</span>{payoutTotal ? payoutTotal.toFixed(2) : 0}</h3>
     </div>
@@ -327,4 +327,3 @@
     {/each}
 </section>
 </div>
-<!-- </Transition> -->

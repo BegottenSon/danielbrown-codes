@@ -1,52 +1,72 @@
-<script>	
-	const crystals = [
-		{
-			name: "Amethyst",
-			image: "https://res.cloudinary.com/begottenson/image/upload/c_scale,w_400/v1603199254/Amethyst_tir0fc.jpg",
-			description: "Oh look, it's purple!",
-			energy: "Amplifies",
-			chakra: "Third eye | Crown",
-			helps: "Intuition and insight | insomnia | Safe travel | Connecting to higher self & Divine | Creativity | Manifestation | Stress & anxiety | Nightmares | Addiction",
-			placement: "Place on third eye chakra | above crown of head | near your bed | under pillow",
-			bkgColor: " to bottom right, hsla(295, 82%, 19%, 1), hsla(342, 82%, 63%, 1)",
-			visible: false,
-		},
-		{
-			name: "Black Tourmaline",
-			image: "https://res.cloudinary.com/begottenson/image/upload/c_scale,w_400/v1603593580/black-tourmaline_ok2upr.jpg",
-			description: "Oh look, it's black!",
-			energy: "Absorbs",
-			chakra: "Root",
-			helps: "Psychic Protection | Protect Against Negativity | Grounding | Stress Release | Cleansing Negative Emotions",
-			placement: "Pants pocket | Near root chakra | Next to bed | Between you & source of negativity",
-			bkgColor: " to bottom right, hsla(360, 82%, 12%, 1), hsla(200, 87%, 22%, 1)",
-			visible: false,
-		},
-		{
-			name: "Rose Quartz",
-			image: "https://res.cloudinary.com/begottenson/image/upload/c_scale,w_400/v1603199255/rose-quartz_i9biui.jpg",
-			description: "It's so pretty!",
-			energy: "Amplifies",
-			chakra: "Heart",
-			helps: "Compassion | Kindness | Unconditional Love | Self-Love | Emotional Healing | Joy | Peace | Playfulness",
-			placement: " On a necklace | Bracelet | Ring (commitment finger) | Heart chakra",
-			bkgColor: " to bottom right, hsla(360, 96%, 46%, 1), hsla(312, 96%, 67%, 1)",
-			visible: false,
+<script>
+	import DropDownMenu from "../components/crystalsPage/DropDownMenu.svelte"
+	import SearchBox from "../components/crystalsPage/SearchBox.svelte"
+	import crystals from "./crystals.js"
+	import { flip } from "svelte/animate"
+
+//TOGGLE FILTER SECTION
+	let displayFilter = false;
+	let hideFilter = true;
+	let filterToggle = () => {
+		displayFilter = !displayFilter;
+		hideFilter = !hideFilter;
+		};
+
+//SETTINGS FOR FILTER SECTION
+	let searchTerm, energy;
+	const originalList = crystals;
+	let filtered = originalList;
+
+//FUNCTIONS FOR FILTER SECTION
+	function filterList() {		
+		if (energy !== "empty" && searchTerm === undefined || searchTerm === "") {
+			filtered = originalList.filter(c => c.energy.includes(energy));
+		}else if (energy === "empty") {
+			filtered = originalList;
+		}else {
+			filtered = originalList;
 		}
-	]
-let y;
+	}
+
+	function searchList() {
+		if(searchTerm !== "") {
+			filtered = originalList.filter(c => 
+			c.name.toUpperCase().includes(searchTerm.toUpperCase()) || c.chakra.toUpperCase().includes(searchTerm.toUpperCase()))
+		}else {
+			filtered = originalList
+		}	
+	}
+
+	function clear() {
+		filtered = originalList;
+		energy = "empty";
+		searchTerm = "";
+		setTimeout(() => {
+			if(searchTerm === "" && energy ==="empty") {
+				filterToggle();
+			}else{
+				return
+			}
+		}, 5000);
+	}
 </script>
 
 <svelte:head>
 	<title>Crystal Grid</title>
 </svelte:head>
 
-<svelte:window bind:innerHeight={y}/>
-
-<section>
-    {#each crystals as crystal}
-    <div class="cell">
-        <div class="default" style="background-image: linear-gradient({crystal.bkgColor})" >
+<h1>Crystal Grid</h1>
+<button class:displayFilter class="filterBtn" on:click={filterToggle}>Filter</button>
+<div class="filter-field" class:hideFilter>
+	<h4>Filter Crystals:</h4>
+	<SearchBox bind:search={searchTerm} on:keyup={searchList}/>
+	<DropDownMenu bind:selected={energy} on:change={filterList} />
+	<button on:click={clear} class="clear">Clear</button>
+</div>
+<section>	
+    {#each filtered as crystal (crystal.name)}
+    <div class="cell" animate:flip="{{duration: 300}}">
+        <div class="default" style="background-image: linear-gradient({crystal.bkgColor})">
             <input type=checkbox id="{crystal.name}" class="checkbox" bind:checked={crystal.visible}>
             <label for="{crystal.name}" class="default-title">{crystal.name}</label>
             <div class="card" 
@@ -82,21 +102,60 @@ let y;
 		display: grid;
 		grid-template-columns: repeat( auto-fit, 400px);
         height: 100%;
-		justify-self: normal;
+		width: 800px;
+		/* justify-self: normal; */
 		overflow: hidden;
+	}
+
+	.displayFilter {
+		opacity: 0;
+		transform: translateY(40px) scale(0);
+	}
+
+	.filterBtn {
+		padding: 0.6em 1em;
+		background-color: var(--blue);
+		color: var(--soft-white);
+		border-radius: 4px;
+		transition: 300ms ease-out;
+		appearance: none;
+		-webkit-appearance: none;
+	}
+
+	.hideFilter {
+		visibility: hidden;
+		opacity: 0;
+		transform: translateY(-30px) scale(0.3);
+	}
+
+	.filter-field {
+		display: flex;
+		justify-content: space-evenly;
+		margin: 1em;
+		padding-bottom: 0.3em;
+		gap: 0.5em;
+		border-bottom: 4px solid var(--accent);
+		transition: 300ms ease-out;
+	}
+
+	.clear {
+		color: var(--soft-white);
+		background-color: var(--accent);
+		border: var(--accent);
+		border-radius: 4px;
 	}
 
     .cell {
         width: 400px;
-        height: 50vh;
+        height: 400px;
         position: relative;
     }
 
 	.default {
 		display: grid;
 		position: absolute;
-		height: 100%;
-		width: 100%;
+		height: 400px;
+		width: 400px;
 		place-items: center;
 		text-align: center;
 		color: whitesmoke;
@@ -107,8 +166,8 @@ let y;
 		flex-direction: column;
 		align-items: center;
 		position: absolute;
-		width: 50%;
-		height: 50%;
+		width: 400px;
+		height: 400px;
 		filter: brightness(1.2);
 		opacity: 0;
 		z-index: -1;
@@ -117,7 +176,7 @@ let y;
 	}
 	
 	.default-title {
-		font-size: 2em;
+		font-size: 1.4em;
 		background-color: #5f0253;
 		border-radius: 8px;
 		padding: 0.5em;
@@ -135,10 +194,10 @@ let y;
 		top: 0;
 		left: 0;
 		margin: auto;
+		overflow-y: scroll;
 		opacity: 1;
 		z-index: 100;
 		transition: 200ms var(--easing), opacity 500ms;
-		/* animation: fixedEase 200ms forwards; */
 	}
 
 	.description {
@@ -160,12 +219,44 @@ let y;
 		font-weight: lighter;
 	}
 
-	@keyframes fixedEase {
-		from {
-			position: absolute;
+	@media (max-width: 800px) {
+		section {
+			grid-template-columns: repeat( auto-fit, 50vw);
+			width: 100%;
 		}
-		to {
-			position: fixed;
+		.filter-field {
+			font-size: 0.6em;
+			gap: 0.3em;
+		}
+
+		.cell {
+			width: 50vw;
+			height: 25vh;
+		}
+
+		.default {
+			height: 100%;
+			width: 100%;
+		}
+
+		.default-title {
+			font-size: 1em;
+		}
+
+		h4 {
+			font-size: 0.8rem;
+		}
+	}
+
+	@media (min-width: 500px) {
+		.card {
+			top: 50%;
+			left: 50%;
+		}
+
+		.expanded {
+			top: 0;
+			left: 0;
 		}
 	}
 </style>
