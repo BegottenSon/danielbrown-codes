@@ -270,7 +270,7 @@
 
         .streams {
             font-size: 1.2em;
-            width: 18vw;
+            width: 16vw;
         }
 
         .instructions {
