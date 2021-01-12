@@ -1,5 +1,4 @@
 <script>
-    import Transition from "../components/Transition.svelte";
     //PAY PER STREAM AMOUNT
     let platforms = [
         {
@@ -110,23 +109,15 @@
         justify-self: center;
     }
 
-    .estimator-grid .title {
-        /* grid-column: 1/2; */
-    }
-
-    .estimator-grid .apple {
-        /* grid-column: 2/3; */
-    }
-
     .estimator-grid .service-names {
-        justify-self: center;
+        align-self: center;
     }
 
     .service-card {
-        /* position: relative; */
         padding: 1em;
         width: 20vw;
     }
+
     .service-card-bkg::before {
         content: "";
         position: absolute;
@@ -134,7 +125,8 @@
         width: 100%;
         top: 0;
         left: 0;
-        background-image: linear-gradient(to bottom right, hsl(16, 71%, 53%), hsl(262, 71%, 53%));
+        background-image: linear-gradient(to bottom right, hsl(16, 71%, 53%), hsl(138, 58%, 32%), hsl(272, 51%, 20%));
+        border: 1px solid var(--box-color);
         border-radius: 8px;
         mix-blend-mode: soft-light;
         filter: blur(1px) opacity(0.6);
@@ -146,11 +138,11 @@
         display: flex;
         flex-direction: column;
         position: relative;
+        width: 80%;
         z-index: 1;
     }
 
     .stream-title {
-        /* grid-column: 1/2; */
         grid-row: 3/4;
     }
 
@@ -160,16 +152,17 @@
 
     #payout-total {
         grid-row: 3/4;
-        /* grid-column: 6/7; */
     }
 
     #payout {
-        justify-self: center;
+        align-self: end;
+        margin-top: 0.7em;
     }
 
     .desired-amount {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1em;
         background-color: var(--box-color);
         border-radius: 8px;
         align-content: center;
@@ -304,7 +297,7 @@
         {/each}
 </section>
 <h2 class="headers">Monthly Estimator</h2>
-<p class="instructions">Click on any stream number under the "Stream" section to add the amount of streams you're receiving</p>
+<p class="instructions">Click on any stream number under each streaming service's name to add the amount of streams you're receiving</p>
 <section class="monthly-estimator">
     <div class="estimator-grid">
         {#each platforms as platform}
@@ -323,7 +316,7 @@
         <h3 id="payout-total"><span class="money-sign">$</span>{payoutTotal ? payoutTotal.toFixed(2) : 0}</h3>
     </div>
 </section>
-<h2 class="headers">Streams Needed to Make ${desiredAmount === undefined ? 0 : desiredAmount}</h2>
+<h2 class="headers">Streams Needed to Make ${desiredAmount === undefined ? 0 : desiredAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h2>
 <p class="instructions">Input the desired amount of money you're looking to make in a month from streaming and the following chart will show the numbers per streaming platform: <input type="number" class="amount-input" bind:value={desiredAmount} on:keyup={calculateAmount}></p>
 <section class="desired-amount">
     {#each platforms as platform}
