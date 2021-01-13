@@ -209,6 +209,7 @@
         background: none;
         border: none;
         border-bottom: 2px solid whitesmoke;
+        border-radius: 0px;
         color: whitesmoke;
         font-size: 1em;
     }
