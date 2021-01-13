@@ -188,7 +188,8 @@
 
     /* THE NUMBERS */
     .monthly-estimator .streams {
-        border-bottom: 2px solid rgb(0, 128, 122);
+        border-bottom: 2px solid rgb(125, 5, 204);
+        border-radius: 0px;
     }
 
     .streams {
