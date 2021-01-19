@@ -13,6 +13,9 @@
     main {
         --main-green: #27d679;
         --light-green: #93ebbc;
+        --purple: hsl(305, 89%, 15%);
+        --dark-purple: hsl(305, 89%, 10%);
+        background-image: radial-gradient(var(--purple), var(--dark-purple));
     }
 </style>
 <main>
