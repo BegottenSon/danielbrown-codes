@@ -9,6 +9,14 @@
     <title>Targets Money</title>
 </svelte:head>
 
-<Overview />
-<ExpensesOverview />
-<TargetsOverview />
+<style>
+    main {
+        --main-green: #27d679;
+        --light-green: #93ebbc;
+    }
+</style>
+<main>
+    <Overview />
+    <ExpensesOverview />
+    <TargetsOverview />
+</main>

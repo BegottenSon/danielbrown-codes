@@ -6,6 +6,26 @@
     let income = 0;
     let free = 0;
 </script>
+
+<style>
+    .money-bar {
+        height: 15vh;
+    }
+
+    .freeBar{
+        fill: var(--light-green);
+    }
+
+    .incomeBar{
+        fill: var(--main-green);
+    }
+
+    .moneySymbol{
+        fill: var(--light-green);
+    }
+
+</style>
+
 <main>
     <section class="profile-section">
         <div class="picture-container">
@@ -15,11 +35,11 @@
     </section>
     
     <section class="money-overview">
-        <svg viewBox="0 0 323 323" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+        <svg class="money-bar" viewBox="0 0 323 323" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
             <path d={baseMoneyBar} fill="#ac8787"/>
-            <path d={freeBar} fill="#93ebbc"/>
-            <path d={incomeBar} fill="#27d679"/>
-            <path d={moneySymbol} fill="#93ebbc" fill-rule="nonzero"/>
+            <path class="freeBar" d={freeBar}/>
+            <path class="incomeBar" d={incomeBar} />
+            <path class="moneySymbol" d={moneySymbol} fill-rule="nonzero"/>
         </svg>
         <div class="money-section">
             <div class="income-section">
