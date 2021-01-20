@@ -1,13 +1,50 @@
 <script>
     import { baseMoneyBar, freeBar, incomeBar, moneySymbol } from "../../routes/icons.js";
 
-    let profilePic;
+    let profilePic = "danb-codes.jpg";
     let userName = "User Name";
     let income = 0;
     let free = 0;
 </script>
 
 <style>
+
+    main {
+        background-color: var(--warm-blue);
+        display: flex;
+        place-items: center;
+        justify-content: center;
+        margin-top: 5em;
+        text-align: center;
+    }
+
+    .profile-section {
+        margin-right: 1em;
+
+    }
+
+    img {
+        height: 15vh;
+        clip-path: circle(50% at 50%);
+    }
+
+    h1 {
+        /* font-size: 1.5em; */
+        color: whitesmoke;
+        font-family: League Gothic;
+    }
+
+    .money-overview {
+        margin-top: 1.6em;
+        /* text-align: center; */
+    }
+
+    .money-section {
+        display: flex;
+        justify-content: space-between;
+        width: 40vw;
+    }
+
     .money-bar {
         height: 15vh;
     }
@@ -22,6 +59,14 @@
 
     .moneySymbol{
         fill: var(--light-green);
+    }
+
+    .income {
+        color: var(--main-green);
+    }
+
+    .free {
+        color: var(--light-green);
     }
 
 </style>
@@ -47,7 +92,7 @@
                 <h2 class="income money">${income}</h2>
             </div>
             <div class="free-section">
-                <h2>Free</h2>
+                <h2>Ballin</h2>
                 <h2 class="free money">${free}</h2>
             </div>
         </div>

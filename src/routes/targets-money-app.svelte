@@ -15,6 +15,7 @@
         --light-green: #93ebbc;
         --purple: hsl(305, 89%, 15%);
         --dark-purple: hsl(305, 89%, 10%);
+        --warm-blue: hsl(211, 81%, 15%);
         background-image: radial-gradient(var(--purple), var(--dark-purple));
     }
 </style>
