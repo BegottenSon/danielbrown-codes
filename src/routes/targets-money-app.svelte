@@ -22,6 +22,7 @@
         display: grid;
         gap: 2em;
         place-items: center;
+        width: 100%;
     }
 </style>
 <main>
