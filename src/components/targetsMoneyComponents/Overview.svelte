@@ -16,6 +16,7 @@
         justify-content: center;
         margin-top: 5em;
         text-align: center;
+        width: 100%;
     }
 
     .profile-section {
@@ -29,14 +30,12 @@
     }
 
     h1 {
-        /* font-size: 1.5em; */
         color: whitesmoke;
         font-family: League Gothic;
     }
 
     .money-overview {
         margin-top: 1.6em;
-        /* text-align: center; */
     }
 
     .money-section {

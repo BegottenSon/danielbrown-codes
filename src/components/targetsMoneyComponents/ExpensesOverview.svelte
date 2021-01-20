@@ -4,7 +4,17 @@
     let personal = 0;
 </script>
 
-<section>
+<style>
+    main {
+        background-color: var(--purple);
+        border-radius: 8px;
+        box-shadow: 0px 0px 4px hsl(29, 49%, 82%);
+        text-align: center;
+        width: 80vw;
+    }
+</style>
+
+<main>
     <h1>Monthly Expenses</h1>
     <section class="expenses-list">
         <div class="liabilities">
@@ -20,4 +30,4 @@
             <h3 class="money">${personal}</h3>
         </div>
     </section>
-</section>
+</main>
