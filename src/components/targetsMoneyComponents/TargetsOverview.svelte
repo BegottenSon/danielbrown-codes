@@ -1,10 +1,9 @@
 <script>
-    import { freeBar, baseBar, musicNote, airplane } from "../../routes/icons.js";
+    import { baseBar, musicNote, airplane } from "../../routes/icons.js";
     let t1 = "Push 2";
     let t2 = "Trip";
     let t3 = "Plugin";
 
-    let savingsBar = freeBar;
 </script>
 
 <style>

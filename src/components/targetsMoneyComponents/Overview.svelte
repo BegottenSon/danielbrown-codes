@@ -1,10 +1,30 @@
 <script>
     import { baseMoneyBar, freeBar, incomeBar, moneySymbol } from "../../routes/icons.js";
+    import { income, expenses } from "../../routes/targets-store.js";
 
     let profilePic = "danb-codes.jpg";
     let userName = "User Name";
-    let income = 0;
-    let free = 0;
+    let income_value;
+    let expenses_value;
+
+    let income_subscribe = income.subscribe(value => {
+        income_value = value;
+    });
+
+    let expenses_subscribe = expenses.subscribe(value => {
+        expenses_value = value;
+    });
+
+    $: free = free_calculate;
+    
+    function free_calculate() {
+        let value = income_value - expenses_value;
+        if(value < 0) {
+            value = 0;
+        }
+
+        return value
+    } ;
 </script>
 
 <style>
@@ -88,7 +108,7 @@
         <div class="money-section">
             <div class="income-section">
                 <h2>Income</h2>
-                <h2 class="income money">${income}</h2>
+                <h2 class="income money">${income_value}</h2>
             </div>
             <div class="free-section">
                 <h2>Ballin</h2>

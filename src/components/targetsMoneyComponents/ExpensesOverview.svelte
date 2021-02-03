@@ -1,7 +1,19 @@
 <script>
-    let liabilities = 0;
+    import { expenses } from "../../routes/targets-store";
+
+    let expenses_value;
+    let expenses_subscribe = expenses.subscribe(value => {
+        expenses_value = value;
+    });
+    
+    $: liabilities = 0;
     let entertainment = 0;
     let personal = 0;
+
+    function addLiabilities() {
+        expenses.update(value => value + liabilities)
+        console.log(expenses_value);
+    }
 </script>
 
 <style>
@@ -52,4 +64,9 @@
             <h3 class="money">${personal}</h3>
         </div>
     </section>
+    <!-- Test Area -->
+    <div>
+        <input type="number" bind:value={liabilities}>
+        <button on:click={addLiabilities}>Add</button>
+    </div>
 </main>
