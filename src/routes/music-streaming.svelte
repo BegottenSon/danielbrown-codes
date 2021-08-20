@@ -4,23 +4,23 @@
         {
             name: "Apple Music",
             id: "apple",
-            pay: 0.00735,
+            pay: 0.00783,
             streams: 0,
-            payout: "204,082"
+            payout: "191,571"
         },
         {
             name: "Spotify",
             id: "spotify",
-            pay: 0.00437,
+            pay: 0.00318,
             streams: 0,
-            payout: "343,249",
+            payout: "471,698",
         },
         {
             name: "Tidal",
             id: "tidal",
-            pay: 0.0125,
+            pay: 0.0128,
             streams: 0,
-            payout: "120,000",
+            payout: "117,188",
         },
         {
             name: "Amazon",
@@ -32,9 +32,9 @@
         {
             name: "YouTube",
             id: "youtube",
-            pay: 0.00069,
+            pay: 0.0008,
             streams: 0,
-            payout: "2,173,913",
+            payout: "1,875,000",
         }
     ]
     
